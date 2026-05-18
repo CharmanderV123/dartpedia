@@ -30,8 +30,8 @@ void main(List<String> arguments) async{
 
 //------------------
 // Updated command_runner code
-  var runner = CommandRunner();
-  await runner.run(arguments);
+  var commandRunner = CommandRunner()..addCommand(HelpCommand());
+  commandRunner.run(arguments);
 }
 
 // //Helper function to print usage instructions
