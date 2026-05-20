@@ -30,6 +30,9 @@ void main(List<String> arguments) async {
   //------------------
   // Updated command_runner code
   var commandRunner = CommandRunner(
+    onOutput: (String output) async {
+      await write(output);
+    },
     onError: (Object error) {
       if (error is Error) {
         throw error;
