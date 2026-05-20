@@ -30,7 +30,16 @@ void main(List<String> arguments) async{
 
 //------------------
 // Updated command_runner code
-  var commandRunner = CommandRunner()..addCommand(HelpCommand());
+ var commandRunner = CommandRunner(
+    onError: (Object error) {
+      if (error is Error) {
+        throw error;
+      }
+      if (error is Exception) {
+        print(error);
+      }
+    },
+  )..addCommand(HelpCommand());
   commandRunner.run(arguments);
 }
 
