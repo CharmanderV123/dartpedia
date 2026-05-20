@@ -5,32 +5,31 @@ import 'package:command_runner/command_runner.dart';
 
 const version = '0.0.1';
 
+void main(List<String> arguments) async {
+  //   //Base case: No arguments or 'help' command
+  //   if (arguments.isEmpty || arguments.first == 'help') {
+  //     print("Dart Help");
+  //     printUsage();
 
-void main(List<String> arguments) async{
-//   //Base case: No arguments or 'help' command
-//   if (arguments.isEmpty || arguments.first == 'help') {
-//     print("Dart Help");
-//     printUsage();
+  //   //Version command
+  //   } else if(arguments.first == 'version'){
+  //     print("Dartpedia CLI version: $version");
+  // }
 
-//   //Version command
-//   } else if(arguments.first == 'version'){
-//     print("Dartpedia CLI version: $version");
-// }
+  //   //Search command
+  //   else if(arguments.first == 'wikipedia'){
+  //     final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null;
+  //     searchWikipedia(inputArgs);
+  // }
 
-//   //Search command
-//   else if(arguments.first == 'wikipedia'){
-//     final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null;
-//     searchWikipedia(inputArgs);
-// }
+  //   //Invalid command
+  //   else{
+  //     printUsage();
+  //   }
 
-//   //Invalid command
-//   else{
-//     printUsage();
-//   }
-
-//------------------
-// Updated command_runner code
- var commandRunner = CommandRunner(
+  //------------------
+  // Updated command_runner code
+  var commandRunner = CommandRunner(
     onError: (Object error) {
       if (error is Error) {
         throw error;
