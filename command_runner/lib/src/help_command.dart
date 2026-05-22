@@ -79,5 +79,15 @@ class HelpCommand extends Command {
     final buffer = StringBuffer();
     buffer.writeln(cmd.usage.instructionText);
     buffer.writeln('$indent ${cmd.help}');
+    if (cmd.valueHelp != null) {
+      buffer.writeln(
+        '$indent [Argument] Required? ${cmd.requiresArgument}, Type: ${cmd.valueHelp}, Default: ${cmd.defaultValue ?? 'none'}',
+      );
+    }
+    buffer.writeln('$indent Options:');
+    for (var option in cmd.options) {
+      buffer.writeln('$indent ${option.usage}');
+    }
+    return buffer.toString();
   }
 }
