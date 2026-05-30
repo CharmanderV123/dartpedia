@@ -33,7 +33,7 @@ enum ConsoleColor {
   final int g;
   final int b;
 
-  String get enableForeground => '$ansiEscapeLiteral[38;2;${r};${g};${b}m';
+  String get enableForeground => '$ansiEscapeLiteral[38;2;$r;$g;${b}m';
 
   String get enableBackground => '$ansiEscapeLiteral[48;2;$r;$g;${b}m';
 

@@ -1,20 +1,19 @@
 class Article {
-  Article({required.thistitle, required this. extract});
+  Article({required this.title, required this.extract});
 
   final String title;
   final String extract;
 
-  static List<Article> listFromJson(Map<String, Object?> json){
+  static List<Article> listFromJson(Map<String, Object?> json) {
     final List<Article> articles = <Article>[];
-    if (json case {'query' : {'pages': final Map<String, Object?> pages}}){
-      for (final MapEntry<String, Object?>(:Object? value) in pages.entries){
-        if(value case{
-          'title':title,
-          'extract': extract,
-        }){
+    if (json case {'query': {'pages': final Map<String, Object?> pages}}) {
+      for (final MapEntry<String, Object?>(:Object? value) in pages.entries) {
+        if (value case {
+          'title': final String title,
+          'extract': final String extract,
+        }) {
           articles.add(Article(title: title, extract: extract));
         }
-        
       }
       return articles;
     }
@@ -27,7 +26,7 @@ class Article {
   };
 
   @override
-  String toString(){
+  String toString() {
     return 'Article{title: $title, extract: $extract}';
   }
-  }
+}

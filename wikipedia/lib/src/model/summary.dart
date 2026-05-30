@@ -1,8 +1,8 @@
 import 'title_set.dart';
 
 class Summary {
-
-  Summanry({
+  /// Returns a new [Summary] instance.
+  Summary({
     required this.titles,
     required this.pageid,
     required this.extract,
@@ -13,23 +13,32 @@ class Summary {
     this.description,
   });
 
-  TitleSet titles;
+  ///
+  TitlesSet titles;
 
+  /// The page ID
   int pageid;
 
+  /// First several sentences of an article in plain text
   String extract;
 
+  /// First several sentences of an article in simple HTML format
   String extractHtml;
 
+  /// Url to the article on Wikipedia
   String? url;
 
-  String long;
+  /// The page language code
+  String lang;
 
+  /// The page language direction code
   String dir;
 
+  /// Wikidata description for the page
   String? description;
 
-  static Summary fromJson(Map<String, Object?> json){
+  /// Returns a new [Summary] instance
+  static Summary fromJson(Map<String, Object?> json) {
     return switch (json) {
       {
         'titles': final Map<String, Object?> titles,
@@ -38,15 +47,14 @@ class Summary {
         'extract_html': final String extractHtml,
         'lang': final String lang,
         'dir': final String dir,
-        'content_urls':{
+        'content_urls': {
           'desktop': {'page': final String url},
-          'mobile' : {'page': String _},
+          'mobile': {'page': String _},
         },
         'description': final String description,
-
-        } => 
+      } =>
         Summary(
-          titles: TitleSet.fromJson(titles),
+          titles: TitlesSet.fromJson(titles),
           pageid: pageid,
           extract: extract,
           extractHtml: extractHtml,
@@ -55,20 +63,20 @@ class Summary {
           url: url,
           description: description,
         ),
-        {
-          'titles': final Map<String, Object?> titles,
-          'pageid': final int pageid,
-          'extract': final String extract,
-          'extract_html': final String extractHtml,
-          'lang': final String lang,
-          'dir': final String dir,
-          'content_urls':{
-            'desktop': {'page': final String url},
-            'mobile' : {'page': String _},
-          },
-        } =>
+      {
+        'titles': final Map<String, Object?> titles,
+        'pageid': final int pageid,
+        'extract': final String extract,
+        'extract_html': final String extractHtml,
+        'lang': final String lang,
+        'dir': final String dir,
+        'content_urls': {
+          'desktop': {'page': final String url},
+          'mobile': {'page': String _},
+        },
+      } =>
         Summary(
-          titles: TitleSet.fromJson(titles),
+          titles: TitlesSet.fromJson(titles),
           pageid: pageid,
           extract: extract,
           extractHtml: extractHtml,
@@ -76,20 +84,19 @@ class Summary {
           dir: dir,
           url: url,
         ),
-        _ => throw FormatException('Could not deserialize Summary, json=$json'),
+      _ => throw FormatException('Could not deserialize Summary, json=$json'),
     };
   }
 
   @override
   String toString() =>
-    'Summary['
-    'titles=$titles, '
-    'pageid=$pageid, '
-    'extract=$extract, '
-    'extractHtml=$extractHtml, '
-    'lang=$lang, '
-    'dir=$dir, '
-    'description=$description'
-    ']';
+      'Summary['
+      'titles=$titles, '
+      'pageid=$pageid, '
+      'extract=$extract, '
+      'extractHtml=$extractHtml, '
+      'lang=$lang, '
+      'dir=$dir, '
+      'description=$description'
+      ']';
 }
-  
